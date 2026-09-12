@@ -1,8 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { openWhatsApp } from '../../utils/whatsapp';
+import React, { useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { openWhatsApp } from '@/utils/whatsapp';
 
 export const Navbar: React.FC = () => {
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const getNavLinkStyle = ({ isActive }: { isActive: boolean }): React.CSSProperties => ({
+    color: isActive ? 'var(--fms-gold)' : '#E2E8F0',
+    textDecoration: 'none',
+    fontSize: '0.75rem',
+    fontWeight: 600,
+    letterSpacing: '1px',
+    textTransform: 'uppercase',
+    transition: 'color 0.2s ease',
+  });
+
+  const closeMobileMenu = () => setIsMobileOpen(false);
+
   return (
     <header style={{
       backgroundColor: 'var(--fms-navy)',
@@ -19,17 +33,19 @@ export const Navbar: React.FC = () => {
         alignItems: 'center',
         justifyContent: 'space-between'
       }}>
-        <Link to="/" style={{ textDecoration: 'none', color: '#fff', display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <Link to="/" onClick={closeMobileMenu} style={{ textDecoration: 'none', color: '#fff', display: 'flex', alignItems: 'center', gap: '8px' }}>
           <span className="serif" style={{ fontSize: '1.2rem', fontWeight: 700, letterSpacing: '1px' }}>FEED MY SHEEP</span>
         </Link>
 
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-          <Link to="/" style={linkStyle}>HOME</Link>
-          <Link to="/media" style={linkStyle}>MEDIA</Link>
-          <Link to="/publications" style={linkStyle}>PUBLICATIONS</Link>
-          <Link to="/living" style={linkStyle}>LIVING</Link>
-          <Link to="/retreats" style={linkStyle}>RETREATS & PILGRIMAGES</Link>
+        {/* Desktop Navigation */}
+        <nav className="nav-desktop">
+          <NavLink to="/" style={getNavLinkStyle}>HOME</NavLink>
+          <NavLink to="/media" style={getNavLinkStyle}>MEDIA</NavLink>
+          <NavLink to="/publications" style={getNavLinkStyle}>PUBLICATIONS</NavLink>
+          <NavLink to="/living" style={getNavLinkStyle}>LIVING</NavLink>
+          <NavLink to="/retreats" style={getNavLinkStyle}>RETREATS & PILGRIMAGES</NavLink>
           <button 
+            type="button"
             onClick={() => openWhatsApp('Donation / General Support')}
             style={{
               background: '#C49746',
@@ -45,16 +61,49 @@ export const Navbar: React.FC = () => {
             DONATE
           </button>
         </nav>
+
+        {/* Mobile Toggle Button */}
+        <button 
+          type="button"
+          className="nav-mobile-toggle"
+          onClick={() => setIsMobileOpen(prev => !prev)}
+          aria-label="Toggle navigation menu"
+        >
+          {isMobileOpen ? '✕' : '☰'}
+        </button>
       </div>
+
+      {/* Mobile Dropdown Menu */}
+      {isMobileOpen && (
+        <nav className="nav-mobile-menu">
+          <NavLink to="/" onClick={closeMobileMenu} style={getNavLinkStyle}>HOME</NavLink>
+          <NavLink to="/media" onClick={closeMobileMenu} style={getNavLinkStyle}>MEDIA</NavLink>
+          <NavLink to="/publications" onClick={closeMobileMenu} style={getNavLinkStyle}>PUBLICATIONS</NavLink>
+          <NavLink to="/living" onClick={closeMobileMenu} style={getNavLinkStyle}>LIVING</NavLink>
+          <NavLink to="/retreats" onClick={closeMobileMenu} style={getNavLinkStyle}>RETREATS & PILGRIMAGES</NavLink>
+          <button 
+            type="button"
+            onClick={() => {
+              closeMobileMenu();
+              openWhatsApp('Donation / General Support');
+            }}
+            style={{
+              background: '#C49746',
+              color: 'var(--fms-navy)',
+              padding: '10px 18px',
+              borderRadius: '4px',
+              fontWeight: 700,
+              fontSize: '0.75rem',
+              border: 'none',
+              cursor: 'pointer',
+              width: '100%',
+              marginTop: '8px'
+            }}
+          >
+            DONATE
+          </button>
+        </nav>
+      )}
     </header>
   );
-};
-
-const linkStyle: React.CSSProperties = {
-  color: '#E2E8F0',
-  textDecoration: 'none',
-  fontSize: '0.75rem',
-  fontWeight: 600,
-  letterSpacing: '1px',
-  textTransform: 'uppercase'
 };

@@ -1,25 +1,23 @@
-import React, { useState } from 'react';
-import { orderProductWhatsApp } from '../../utils/whatsapp';
-
-interface Product {
-  id: number;
-  category: 'publications' | 'living';
-  title: string;
-  price: string;
-  image: string;
-}
+import React from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { orderProductWhatsApp } from '@/utils/whatsapp';
+import { PRODUCTS } from '@/data/products';
+import type { Product } from '@/types';
 
 export const Catalog: React.FC<{ initialCategory?: 'publications' | 'living' }> = ({ initialCategory = 'publications' }) => {
-  const [tab, setTab] = useState<'all' | 'publications' | 'living'>(initialCategory);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const products: Product[] = [
-    { id: 1, category: 'publications', title: 'Walking with Mary Reflection Book', price: '₹350', image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=500&q=80' },
-    { id: 2, category: 'publications', title: 'The Enemy Within Study Guide', price: '₹280', image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=500&q=80' },
-    { id: 3, category: 'living', title: 'Sacred Heart Framed Canvas', price: '₹1,200', image: 'https://images.unsplash.com/photo-1582560475093-ba66accbc424?auto=format&fit=crop&w=500&q=80' },
-    { id: 4, category: 'living', title: 'Handcrafted Olive Wood Rosary', price: '₹650', image: 'https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=500&q=80' },
-  ];
+  const categoryParam = searchParams.get('category');
+  const tab: 'all' | 'publications' | 'living' =
+    (categoryParam === 'all' || categoryParam === 'publications' || categoryParam === 'living')
+      ? categoryParam
+      : initialCategory;
 
-  const filtered = tab === 'all' ? products : products.filter(p => p.category === tab);
+  const handleTabSelect = (selectedTab: 'all' | 'publications' | 'living') => {
+    setSearchParams(selectedTab === initialCategory ? {} : { category: selectedTab });
+  };
+
+  const filtered = tab === 'all' ? PRODUCTS : PRODUCTS.filter((p: Product) => p.category === tab);
 
   return (
     <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '50px 24px' }}>
@@ -32,7 +30,7 @@ export const Catalog: React.FC<{ initialCategory?: 'publications' | 'living' }> 
           {(['all', 'publications', 'living'] as const).map(t => (
             <button
               key={t}
-              onClick={() => setTab(t)}
+              onClick={() => handleTabSelect(t)}
               style={{
                 padding: '6px 16px',
                 borderRadius: '20px',
@@ -53,9 +51,9 @@ export const Catalog: React.FC<{ initialCategory?: 'publications' | 'living' }> 
 
       {/* Product Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '24px' }}>
-        {filtered.map(p => (
+        {filtered.map((p: Product) => (
           <div key={p.id} style={{ background: '#fff', border: '1px solid var(--border-light)', borderRadius: '10px', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-            <img src={p.image} alt={p.title} style={{ height: '220px', width: '100%', objectFit: 'cover' }} />
+            <img src={p.image} alt={p.title} loading="lazy" style={{ height: '220px', width: '100%', objectFit: 'cover' }} />
             <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
               <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: 'var(--fms-gold)', fontWeight: 700 }}>{p.category}</span>
               <h4 className="serif" style={{ fontSize: '0.95rem', margin: '6px 0 8px', color: 'var(--fms-navy)' }}>{p.title}</h4>

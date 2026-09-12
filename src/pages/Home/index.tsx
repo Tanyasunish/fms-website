@@ -1,19 +1,10 @@
 import React from 'react';
-import { openWhatsApp } from '../../utils/whatsapp';
+import { openWhatsApp } from '@/utils/whatsapp';
+import { PILLARS } from '@/data/pillars';
+import { UPCOMING_EVENTS } from '@/data/events';
+import type { Pillar, UpcomingEvent } from '@/types';
 
 export const Home: React.FC = () => {
-  const pillars = [
-    { num: 1, icon: '▶️', name: 'FMS MEDIA', sub: "Proclaiming the Word in Today's World", desc: "5:30 Blessing, YouTube series, and digital catechesis." },
-    { num: 2, icon: '📖', name: 'FMS PUBLICATIONS', sub: "Books that Nurture Faith & Life", desc: "Retreat books, prayer companions, novenas, and journals." },
-    { num: 3, icon: '🏠', name: 'FMS LIVING', sub: "Christian Living, Beautifully Made", desc: "Prayer corner collections, framed sacred art, home essentials." },
-    { num: 4, icon: '👕', name: 'FMS APPAREL', sub: "Wear Your Faith with Dignity", desc: "Minimal Christian wear, clergy vestments, and altar linens." },
-    { num: 5, icon: '👶', name: 'FMS KIDS', sub: "Building Little Hearts for a Great Faith", desc: "Catholic children's books, activity kits, and games." },
-    { num: 6, icon: '⛪', name: 'FMS RETREAT & FORMATION', sub: "Forming Disciples, Equipping Leaders", desc: "Youth, marriage, catechist, and priest renewal programs." },
-    { num: 7, icon: '🗺️', name: 'FMS PILGRIMAGES', sub: "Journeys of Faith, Memories for a Lifetime", desc: "Holy Land journeys, shrine trails, and prayer expeditions." },
-    { num: 8, icon: '🎬', name: 'FMS STUDIO', sub: "Creative Solutions for the Church", desc: "Branding, video production, and websites for institutions." },
-    { num: 9, icon: '🤝', name: 'FMS FOUNDATION', sub: "Profits that Fuel Evangelisation", desc: "Charity initiatives, seminary support, and Bible distribution." },
-  ];
-
   return (
     <div>
       {/* 1. Hero Section */}
@@ -28,7 +19,13 @@ export const Home: React.FC = () => {
             </p>
             <div style={{ display: 'flex', gap: '12px' }}>
               <a href="#pillars" className="btn btn-navy">Explore Our Mission</a>
-              <button onClick={() => openWhatsApp('Support Our Mission')} className="btn btn-outline">Support Mission</button>
+              <button 
+                type="button" 
+                onClick={() => openWhatsApp('Support Our Mission')} 
+                className="btn btn-outline"
+              >
+                Support Mission
+              </button>
             </div>
           </div>
 
@@ -50,7 +47,7 @@ export const Home: React.FC = () => {
 
       {/* 2. Main 9 Pillars & Sidebar */}
       <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '40px 24px' }} id="pillars">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '30px' }}>
+        <div className="home-grid">
           
           {/* 9 Pillars Grid */}
           <div>
@@ -60,10 +57,18 @@ export const Home: React.FC = () => {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
-              {pillars.map((p) => (
+              {PILLARS.map((p: Pillar) => (
                 <div 
                   key={p.num} 
+                  role="button"
+                  tabIndex={0}
                   onClick={() => openWhatsApp(`Enquiry for Pillar ${p.num}: ${p.name}`)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      openWhatsApp(`Enquiry for Pillar ${p.num}: ${p.name}`);
+                    }
+                  }}
                   style={{
                     background: '#fff',
                     border: '1px solid var(--border-light)',
@@ -102,7 +107,20 @@ export const Home: React.FC = () => {
               }}>
                 <h3 className="serif" style={{ fontSize: '1.3rem' }}>5:30 Blessing</h3>
                 <p style={{ fontSize: '0.7rem', color: '#CBD5E1', marginBottom: '6px' }}>Start your day with the Word & prayer.</p>
-                <span onClick={() => openWhatsApp("5:30 Blessing link request")} style={{ color: 'var(--fms-gold)', fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer' }}>WATCH LATEST ➔</span>
+                <span 
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => openWhatsApp("5:30 Blessing link request")} 
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      openWhatsApp("5:30 Blessing link request");
+                    }
+                  }}
+                  style={{ color: 'var(--fms-gold)', fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'inline-block' }}
+                >
+                  WATCH LATEST ➔
+                </span>
               </div>
             </div>
 
@@ -110,12 +128,8 @@ export const Home: React.FC = () => {
             <div style={{ background: '#fff', border: '1px solid var(--border-light)', borderRadius: '8px', padding: '16px' }}>
               <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '10px' }}>UPCOMING EVENTS</div>
               
-              {[
-                { day: '19', month: 'MAY', title: 'Teens – Jeremiah 2026', loc: 'Zion Retreat Centre' },
-                { day: '26', month: 'MAY', title: 'Kids – Samuel 2026', loc: 'Zion Retreat Centre' },
-                { day: '22', month: 'MAY', title: 'Couples – Elkanah Hannah', loc: 'Zion Retreat Centre' }
-              ].map((ev, i) => (
-                <div key={i} style={{ display: 'flex', gap: '12px', padding: '8px 0', borderBottom: '1px solid #F1ECE3', alignItems: 'center' }}>
+              {UPCOMING_EVENTS.map((ev: UpcomingEvent) => (
+                <div key={ev.id} style={{ display: 'flex', gap: '12px', padding: '8px 0', borderBottom: '1px solid #F1ECE3', alignItems: 'center' }}>
                   <div style={{ background: 'var(--fms-navy)', color: '#fff', textAlign: 'center', borderRadius: '4px', minWidth: '40px', padding: '4px' }}>
                     <div style={{ fontSize: '0.9rem', fontWeight: 700 }}>{ev.day}</div>
                     <div style={{ fontSize: '0.55rem' }}>{ev.month}</div>

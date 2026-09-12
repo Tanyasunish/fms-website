@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { openWhatsApp } from '../../utils/whatsapp';
+import { openWhatsApp } from '@/utils/whatsapp';
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
+  const [statusMessage, setStatusMessage] = useState('');
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    openWhatsApp(`Subscribing to updates with email: ${email}`);
+    const cleanEmail = email.trim();
+    if (!cleanEmail) return;
+    openWhatsApp(`Subscribing to updates with email: ${cleanEmail}`);
     setEmail('');
+    setStatusMessage('✓ WhatsApp opened with your subscription request');
+    setTimeout(() => setStatusMessage(''), 4000);
   };
 
   return (
@@ -36,6 +41,11 @@ export const Footer: React.FC = () => {
               SUBSCRIBE
             </button>
           </form>
+          {statusMessage && (
+            <p style={{ fontSize: '0.7rem', color: '#166534', marginTop: '6px' }}>
+              {statusMessage}
+            </p>
+          )}
         </div>
 
         <div style={{ textAlign: 'center' }}>
