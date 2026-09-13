@@ -1,9 +1,9 @@
 .btn {
-  padding: 10px 20px;
-  font-size: 0.75rem;
+  padding: 12px 26px;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   border-radius: 4px;
   text-decoration: none;
   display: inline-flex;
@@ -11,15 +11,20 @@
   justify-content: center;
   gap: 8px;
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
-    color 0.2s ease;
+    color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
 
   &:focus-visible {
     outline: 2px solid var(--fms-gold-deep);
-    outline-offset: 2px;
+    outline-offset: 3px;
   }
 }
 
@@ -40,6 +45,18 @@
   &:hover {
     border-color: var(--fms-gold-deep);
     color: var(--fms-gold-deep);
+  }
+}
+
+.outlineLight {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: var(--on-brand);
+
+  &:hover {
+    border-color: var(--fms-gold-strong);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--fms-gold-strong);
   }
 }
 
@@ -72,8 +89,12 @@
 }
 
 .small {
-  padding: 8px 16px;
+  padding: 9px 18px;
   font-size: 0.72rem;
+
+  &:hover {
+    transform: none;
+  }
 }
 
 .block {

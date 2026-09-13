@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './Button.module.scss';
 
-export type ButtonVariant = 'navy' | 'outline' | 'gold' | 'goldDeep' | 'whatsapp';
+export type ButtonVariant = 'navy' | 'outline' | 'outlineLight' | 'gold' | 'goldDeep' | 'whatsapp';
 
 interface ButtonBaseProps {
   variant?: ButtonVariant;

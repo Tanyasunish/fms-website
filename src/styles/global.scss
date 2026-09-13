@@ -2,13 +2,15 @@
 
 :root {
   /* Brand colors */
-  --fms-navy: #2f4a3a;
-  --fms-navy-hover: #3a5c49;
-  --fms-ivory: #faf8f3;
-  --fms-ivory-dark: #f0e9da;
-  --fms-gold: #d89b5c;
-  --fms-gold-strong: #dca560;
-  --fms-gold-strong-hover: #c99550;
+  --fms-navy: #244b3a;
+  --fms-navy-hover: #2f5c47;
+  --fms-forest-deep: #18352a;
+  --fms-ivory: #f7f3ea;
+  --fms-ivory-dark: #eae1cf;
+  --fms-sand: #eae1cf;
+  --fms-gold: #c59a52;
+  --fms-gold-strong: #c59a52;
+  --fms-gold-strong-hover: #b58943;
   --fms-gold-deep: #a07630;
   --fms-gold-deep-hover: #8c6628;
   --fms-gold-script: #82501f;
@@ -47,8 +49,10 @@ $themes: (
   vatican: (
     '--fms-navy': #6d552c,
     '--fms-navy-hover': #7d643b,
+    '--fms-forest-deep': #4a3d1f,
     '--fms-ivory': #f9f7f3,
     '--fms-ivory-dark': #e8e2d1,
+    '--fms-sand': #ded6c2,
     '--fms-gold': #cbbe8b,
     '--fms-gold-strong': #b2985f,
     '--fms-gold-strong-hover': #9f8348,
@@ -75,8 +79,10 @@ $themes: (
   dark: (
     '--fms-navy': #1b201d,
     '--fms-navy-hover': #262d27,
+    '--fms-forest-deep': #0d100e,
     '--fms-ivory': #141715,
     '--fms-ivory-dark': #0d100e,
+    '--fms-sand': #1d231f,
     '--fms-gold': #d39b55,
     '--fms-gold-strong': #d89b5c,
     '--fms-gold-strong-hover': #c07f42,
@@ -118,6 +124,10 @@ $themes: (
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: var(--fms-ivory);
@@ -127,6 +137,17 @@ body {
   transition:
     background-color 0.25s ease,
     color 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 button {

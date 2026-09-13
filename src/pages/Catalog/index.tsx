@@ -52,7 +52,7 @@ export const Catalog: FC = () => {
 
       <div className={styles.grid}>
         {filtered.map((p: Product) => (
-          <Card key={p.id}>
+          <Card key={p.id} className={styles.card}>
             <CardImage src={p.image} alt={p.title} />
             <CardBody>
               <CardEyebrow>{p.category}</CardEyebrow>
