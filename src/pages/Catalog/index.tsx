@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button/Button';
 import { SectionHeading } from '@/components/ui/SectionHeading/SectionHeading';
 import { Icon } from '@/components/ui/Icon/Icon';
 import { WhatsAppIcon } from '@/components/ui/Icon/WhatsAppIcon';
+import { Card, CardAction, CardBody, CardEyebrow, CardImage, CardTitle } from '@/components/ui/Card/Card';
 import styles from './Catalog.module.scss';
 
 const defaultFilterFor = (pathname: string): Exclude<CatalogFilter, 'all'> =>
@@ -51,23 +52,20 @@ export const Catalog: FC = () => {
 
       <div className={styles.grid}>
         {filtered.map((p: Product) => (
-          <article key={p.id} className={styles.productCard}>
-            <img src={p.image} alt={p.title} loading="lazy" className={styles.thumb} />
-            <div className={styles.productBody}>
-              <span className={styles.category}>{p.category}</span>
-              <h4 className={`${styles.productTitle} serif`}>{p.title}</h4>
+          <Card key={p.id}>
+            <CardImage src={p.image} alt={p.title} />
+            <CardBody>
+              <CardEyebrow>{p.category}</CardEyebrow>
+              <CardTitle>{p.title}</CardTitle>
               <div className={styles.price}>{p.price}</div>
-              <Button
-                variant="whatsapp"
-                block
-                className={styles.orderBtn}
-                onClick={() => orderProductWhatsApp(p.title, p.price)}
-              >
-                <Icon icon={WhatsAppIcon} size={16} />
-                Order via WhatsApp
-              </Button>
-            </div>
-          </article>
+              <CardAction>
+                <Button variant="whatsapp" block onClick={() => orderProductWhatsApp(p.title, p.price)}>
+                  <Icon icon={WhatsAppIcon} size={16} />
+                  Order via WhatsApp
+                </Button>
+              </CardAction>
+            </CardBody>
+          </Card>
         ))}
       </div>
     </section>
