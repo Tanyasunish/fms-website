@@ -1,3 +1,4 @@
+import type { Category } from '../data/categories';
 import type { LucideIcon } from 'lucide-react';
 
 export interface Pillar {
@@ -25,7 +26,7 @@ export interface FormationEvent {
 
 export interface Product {
   id: number;
-  category: 'publications' | 'living';
+  category: Category;
   title: string;
   price: string;
   image: string;

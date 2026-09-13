@@ -31,7 +31,14 @@ export function Button({ variant = 'navy', small = false, block = false, classNa
   );
 }
 
-export function ButtonLink({ variant = 'navy', small = false, block = false, className, href, children }: ButtonLinkProps) {
+export function ButtonLink({
+  variant = 'navy',
+  small = false,
+  block = false,
+  className,
+  href,
+  children,
+}: ButtonLinkProps) {
   return (
     <a href={href} className={buildClasses(variant, small, block, className)}>
       {children}
