@@ -122,23 +122,27 @@
 }
 
 .pillarIcon {
+  display: block;
   color: var(--fms-navy);
   margin-bottom: 6px;
 }
 
 .pillarName {
+  display: block;
   font-size: 0.8rem;
   color: var(--fms-navy);
   margin-bottom: 4px;
 }
 
 .pillarSub {
+  display: block;
   font-size: 0.75rem;
   color: var(--fms-gold-script);
   margin-bottom: 6px;
 }
 
 .pillarDesc {
+  display: block;
   font-size: 0.68rem;
   color: var(--text-muted);
 }
@@ -198,6 +202,11 @@
 
   &:hover {
     color: var(--fms-gold-deep);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--fms-gold);
+    outline-offset: 2px;
   }
 }
 

@@ -1,7 +1,9 @@
 import { useState, type FC } from 'react';
+import { Menu, X } from 'lucide-react';
 import { NavLink, Link } from 'react-router-dom';
 import { openWhatsApp } from '@/utils/whatsapp';
 import { Button } from '@/components/ui/Button/Button';
+import { Icon } from '@/components/ui/Icon/Icon';
 import styles from './Navbar.module.scss';
 
 const NAV_ITEMS = [
@@ -46,7 +48,7 @@ export const Navbar: FC = () => {
           aria-label="Toggle navigation menu"
           aria-expanded={isMobileOpen}
         >
-          {isMobileOpen ? '✕' : '☰'}
+          <Icon icon={isMobileOpen ? X : Menu} size={24} />
         </button>
       </div>
 

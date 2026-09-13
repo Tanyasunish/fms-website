@@ -34,6 +34,11 @@
   &:hover {
     border-color: var(--fms-gold);
   }
+
+  &:focus-visible {
+    outline: 2px solid var(--fms-gold);
+    outline-offset: 2px;
+  }
 }
 
 .tabActive {
