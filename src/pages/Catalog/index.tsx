@@ -5,6 +5,8 @@ import { PRODUCTS } from '@/data/products';
 import type { Product } from '@/types';
 import { Button } from '@/components/ui/Button/Button';
 import { SectionHeading } from '@/components/ui/SectionHeading/SectionHeading';
+import { Icon } from '@/components/ui/Icon/Icon';
+import { WhatsAppIcon } from '@/components/ui/Icon/WhatsAppIcon';
 import styles from './Catalog.module.scss';
 
 type Category = 'all' | 'publications' | 'living';
@@ -60,13 +62,9 @@ export const Catalog: FC<CatalogProps> = ({ initialCategory = 'publications' }) 
               <span className={styles.category}>{p.category}</span>
               <h4 className={`${styles.productTitle} serif`}>{p.title}</h4>
               <div className={styles.price}>{p.price}</div>
-              <Button
-                variant="whatsapp"
-                block
-                className={styles.orderBtn}
-                onClick={() => orderProductWhatsApp(p.title, p.price)}
-              >
-                💬 Order via WhatsApp
+              <Button variant="whatsapp" block className={styles.orderBtn} onClick={() => orderProductWhatsApp(p.title, p.price)}>
+                <Icon icon={WhatsAppIcon} size={16} />
+                Order via WhatsApp
               </Button>
             </div>
           </article>

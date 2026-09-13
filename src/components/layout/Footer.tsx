@@ -1,6 +1,9 @@
 import { useState, type FC, type FormEvent } from 'react';
+import { Mail, MapPin } from 'lucide-react';
 import { openWhatsApp } from '@/utils/whatsapp';
 import { Button } from '@/components/ui/Button/Button';
+import { Icon } from '@/components/ui/Icon/Icon';
+import { WhatsAppIcon } from '@/components/ui/Icon/WhatsAppIcon';
 import styles from './Footer.module.scss';
 
 export const Footer: FC = () => {
@@ -48,9 +51,18 @@ export const Footer: FC = () => {
         <div>
           <h5 className={`${styles.columnTitle} serif`}>CONTACT US</h5>
           <p className={styles.contact}>
-            💬 WhatsApp: +91 9847 9847 46<br />
-            ✉️ Email: info@feedmysheep.org<br />
-            📍 Zion Retreat Centre, Kerala, India
+            <span className={styles.contactRow}>
+              <Icon icon={WhatsAppIcon} size={14} className={styles.contactIcon} />
+              WhatsApp: +91 9847 9847 46
+            </span>
+            <span className={styles.contactRow}>
+              <Icon icon={Mail} size={14} className={styles.contactIcon} />
+              info@feedmysheep.org
+            </span>
+            <span className={styles.contactRow}>
+              <Icon icon={MapPin} size={14} className={styles.contactIcon} />
+              Zion Retreat Centre, Kerala, India
+            </span>
           </p>
         </div>
       </div>

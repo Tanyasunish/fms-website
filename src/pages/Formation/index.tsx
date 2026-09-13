@@ -1,9 +1,11 @@
 import type { FC } from 'react';
+import { Calendar, MapPin } from 'lucide-react';
 import { openWhatsApp } from '@/utils/whatsapp';
 import { FORMATION_EVENTS } from '@/data/events';
 import type { FormationEvent } from '@/types';
 import { Button } from '@/components/ui/Button/Button';
 import { SectionHeading } from '@/components/ui/SectionHeading/SectionHeading';
+import { Icon } from '@/components/ui/Icon/Icon';
 import styles from './Formation.module.scss';
 
 export const Formation: FC = () => {
@@ -16,7 +18,14 @@ export const Formation: FC = () => {
             <div>
               <h4 className={`${styles.cardTitle} serif`}>{ev.title}</h4>
               <p className={styles.cardMeta}>
-                📅 {ev.date} | 📍 {ev.loc}
+                <span className={styles.metaItem}>
+                  <Icon icon={Calendar} size={14} />
+                  {ev.date}
+                </span>
+                <span className={styles.metaItem}>
+                  <Icon icon={MapPin} size={14} />
+                  {ev.loc}
+                </span>
               </p>
             </div>
             <Button variant="whatsapp" onClick={() => openWhatsApp(`Registering for ${ev.title}`)}>
