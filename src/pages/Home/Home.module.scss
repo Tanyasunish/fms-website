@@ -229,7 +229,7 @@
   height: 34px;
   border-radius: 50%;
   margin-top: 18px;
-  color: var(--fms-navy);
+  color: var(--text-heading);
   background: var(--fms-ivory-dark);
   transition:
     transform 0.2s ease,
@@ -315,7 +315,7 @@
   }
 
   &:hover {
-    color: var(--fms-navy);
+    color: var(--text-heading);
 
     svg {
       transform: translateX(4px);
@@ -481,10 +481,6 @@
   transform: translateX(4px);
   background-color: var(--fms-navy);
   color: var(--fms-gold-strong);
-}
-
-.pillarGrid > button:hover .pillarName {
-  color: var(--fms-navy);
 }
 
 @media (max-width: 900px) {
