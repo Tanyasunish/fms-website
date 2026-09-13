@@ -1,6 +1,8 @@
+import type { LucideIcon } from 'lucide-react';
+
 export interface Pillar {
   num: number;
-  icon: string;
+  icon: LucideIcon;
   name: string;
   sub: string;
   desc: string;

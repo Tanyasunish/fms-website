@@ -1,10 +1,12 @@
 import type { FC } from 'react';
+import { ArrowRight } from 'lucide-react';
 import { openWhatsApp } from '@/utils/whatsapp';
 import { PILLARS } from '@/data/pillars';
 import { UPCOMING_EVENTS } from '@/data/events';
 import type { Pillar, UpcomingEvent } from '@/types';
 import { Button, ButtonLink } from '@/components/ui/Button/Button';
 import { SectionHeading } from '@/components/ui/SectionHeading/SectionHeading';
+import { Icon } from '@/components/ui/Icon/Icon';
 import styles from './Home.module.scss';
 
 export const Home: FC = () => {
@@ -65,7 +67,9 @@ export const Home: FC = () => {
                   className={styles.pillarCard}
                 >
                   <div className={styles.pillarNum}>{p.num}</div>
-                  <div className={styles.pillarIcon}>{p.icon}</div>
+                  <div className={styles.pillarIcon}>
+                    <Icon icon={p.icon} size={28} />
+                  </div>
                   <h4 className={`${styles.pillarName} serif`}>{p.name}</h4>
                   <div className={`${styles.pillarSub} script-text`}>{p.sub}</div>
                   <p className={styles.pillarDesc}>{p.desc}</p>
@@ -82,7 +86,8 @@ export const Home: FC = () => {
                 <h3 className={`${styles.blessingTitle} serif`}>5:30 Blessing</h3>
                 <p className={styles.blessingText}>Start your day with the Word & prayer.</p>
                 <button type="button" onClick={() => openWhatsApp('5:30 Blessing link request')} className={styles.watchBtn}>
-                  WATCH LATEST ➔
+                  WATCH LATEST
+                  <Icon icon={ArrowRight} size={12} />
                 </button>
               </div>
             </div>
