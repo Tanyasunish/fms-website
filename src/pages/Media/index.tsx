@@ -10,10 +10,13 @@ import styles from './Media.module.scss';
 export const Media: FC = () => {
   return (
     <section className={styles.section}>
-      <SectionHeading title="FMS MEDIA LIBRARY" />
+      <SectionHeading
+        title="FMS MEDIA LIBRARY"
+        lead="Video series and broadcasts to help you pray, learn and draw closer to Christ — wherever you are."
+      />
       <div className={styles.grid}>
         {MEDIA_SERIES.map((s: MediaSeries) => (
-          <Card key={s.id}>
+          <Card key={s.id} className={styles.card}>
             <CardImage src={s.img} alt={s.title} />
             <CardBody>
               <CardTitle>{s.title}</CardTitle>

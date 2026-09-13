@@ -1,64 +1,89 @@
 .section {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 50px 24px;
+  padding: 110px 24px;
 }
 
 .header {
-  margin-bottom: 36px;
+  margin-bottom: 48px;
 }
 
 .tabs {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 24px;
+  margin-top: 28px;
   flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 0;
 }
 
 .tab {
-  padding: 6px 16px;
-  border-radius: 20px;
-  border: 1px solid var(--border-light);
-  background: var(--card-bg);
-  color: var(--text-dark);
-  font-size: 0.75rem;
+  padding: 10px 4px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.8rem;
   font-weight: 700;
+  letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
   transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
+    color 0.2s ease,
+    border-color 0.2s ease;
 
   &:hover {
-    border-color: var(--fms-gold-deep);
+    color: var(--text-heading);
   }
 
   &:focus-visible {
     outline: 2px solid var(--fms-gold-deep);
-    outline-offset: 2px;
+    outline-offset: 4px;
   }
 }
 
 .tabActive {
-  background: var(--fms-navy);
-  border-color: var(--fms-navy);
-  color: var(--on-brand);
+  color: var(--fms-navy);
+  border-bottom-color: var(--fms-gold-strong);
 
   &:hover {
-    border-color: var(--fms-navy);
+    color: var(--fms-navy);
   }
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
+  gap: 26px;
+}
+
+.card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold-border-soft);
+    box-shadow: 0 16px 40px rgba(24, 53, 42, 0.1);
+  }
 }
 
 .price {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  margin-bottom: 16px;
+  color: var(--text-heading);
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 84px 20px 64px;
+  }
+
+  .tabs {
+    gap: 18px;
+  }
 }

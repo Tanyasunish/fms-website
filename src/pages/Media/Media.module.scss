@@ -1,11 +1,30 @@
 .section {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 50px 24px;
+  padding: 110px 24px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 26px;
+}
+
+.card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold-border-soft);
+    box-shadow: 0 16px 40px rgba(24, 53, 42, 0.1);
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 84px 20px 64px;
+  }
 }
