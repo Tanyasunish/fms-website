@@ -18,14 +18,14 @@
     color 0.2s ease;
 
   &:focus-visible {
-    outline: 2px solid var(--fms-gold);
+    outline: 2px solid var(--fms-gold-deep);
     outline-offset: 2px;
   }
 }
 
 .navy {
   background: var(--fms-navy);
-  color: var(--card-bg);
+  color: var(--on-brand);
 
   &:hover {
     background: var(--fms-navy-hover);
@@ -38,14 +38,15 @@
   color: var(--text-dark);
 
   &:hover {
-    border-color: var(--fms-gold);
-    color: var(--fms-gold);
+    border-color: var(--fms-gold-deep);
+    color: var(--fms-gold-deep);
   }
 }
 
 .gold {
   background: var(--fms-gold-strong);
-  color: var(--fms-navy);
+  color: var(--text-heading);
+  box-shadow: 0 2px 12px rgba(216, 155, 92, 0.35);
 
   &:hover {
     background: var(--fms-gold-strong-hover);
@@ -54,7 +55,7 @@
 
 .goldDeep {
   background: var(--fms-gold-deep);
-  color: var(--card-bg);
+  color: var(--on-brand);
 
   &:hover {
     background: var(--fms-gold-deep-hover);
@@ -63,7 +64,7 @@
 
 .whatsapp {
   background: var(--wa);
-  color: var(--card-bg);
+  color: var(--on-brand);
 
   &:hover {
     background: var(--wa-hover);

@@ -20,7 +20,7 @@
 
 .heroEyebrow {
   font-size: 1.25rem;
-  color: var(--fms-navy);
+  color: var(--text-heading);
   margin-bottom: 14px;
   line-height: 1.35;
 }
@@ -54,7 +54,7 @@
 
 .heroTitle {
   font-size: 1.4rem;
-  color: var(--fms-navy);
+  color: var(--text-heading);
 }
 
 .heroSubtitle {
@@ -65,6 +65,7 @@
 .heroScript {
   font-size: 1.1rem;
   color: var(--fms-gold-script);
+  text-shadow: 0 1px 2px rgba(250, 248, 243, 0.85);
 }
 
 .section {
@@ -95,7 +96,7 @@
   height: 22px;
   border-radius: 50%;
   background: var(--fms-navy);
-  color: var(--card-bg);
+  color: var(--on-brand);
   font-size: 0.7rem;
   margin: 0 auto 8px;
   display: flex;
@@ -105,14 +106,14 @@
 
 .pillarIcon {
   display: block;
-  color: var(--fms-navy);
+  color: var(--text-heading);
   margin-bottom: 6px;
 }
 
 .pillarName {
   display: block;
   font-size: 0.8rem;
-  color: var(--fms-navy);
+  color: var(--text-heading);
   margin-bottom: 4px;
 }
 
@@ -156,7 +157,7 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: 14px;
-  color: var(--card-bg);
+  color: var(--on-brand);
 }
 
 .blessingTitle {
@@ -183,7 +184,7 @@
   text-align: left;
 
   &:hover {
-    color: var(--fms-gold-deep);
+    color: var(--fms-gold-strong);
   }
 
   &:focus-visible {
@@ -206,7 +207,7 @@
 
 .eventBadge {
   background: var(--fms-navy);
-  color: var(--card-bg);
+  color: var(--on-brand);
   text-align: center;
   border-radius: 4px;
   min-width: 40px;
@@ -224,7 +225,7 @@
 
 .eventTitle {
   font-size: 0.78rem;
-  color: var(--fms-navy);
+  color: var(--text-heading);
 }
 
 .eventLoc {

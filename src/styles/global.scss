@@ -2,41 +2,112 @@
 
 :root {
   /* Brand colors */
-  --fms-navy: #0a192f;
-  --fms-navy-hover: #162947;
-  --fms-ivory: #fdfbf7;
-  --fms-ivory-dark: #f4efe6;
-  --fms-gold: #c5a059;
-  --fms-gold-strong: #c49746;
-  --fms-gold-strong-hover: #b0883a;
-  --fms-gold-deep: #8f7241;
-  --fms-gold-deep-hover: #7c6136;
-  --fms-gold-script: #926e28;
+  --fms-navy: #2f4a3a;
+  --fms-navy-hover: #3a5c49;
+  --fms-ivory: #faf8f3;
+  --fms-ivory-dark: #f0e9da;
+  --fms-gold: #d89b5c;
+  --fms-gold-strong: #dca560;
+  --fms-gold-strong-hover: #c99550;
+  --fms-gold-deep: #a07630;
+  --fms-gold-deep-hover: #8c6628;
+  --fms-gold-script: #82501f;
 
   /* Surfaces & borders */
   --card-bg: #ffffff;
-  --border-light: #e7dfd3;
-  --border-faint: #f1ece3;
-  --footer-divider: #e5ddcf;
+  --border-light: #e5ddd0;
+  --border-faint: #ede7dc;
+  --footer-divider: #ddd5c4;
 
   /* Text */
-  --text-dark: #1f2937;
-  --text-soft: #2d3748;
-  --text-muted: #5b6777;
-  --on-navy: #e2e8f0;
-  --on-navy-muted: #cbd5e1;
+  --text-dark: #252525;
+  --text-soft: #3d4340;
+  --text-muted: #5f6a64;
+  --text-heading: #2f4a3a;
+  --on-brand: #ffffff;
+  --on-navy: #e7ede9;
+  --on-navy-muted: #b6c4ba;
 
   /* Brand actions */
   --wa: #25d366;
   --wa-hover: #1eb857;
-  --success: #166534;
+  --success: #176b3a;
 
   /* State */
-  --nav-overlay-soft: rgba(10, 25, 47, 0.15);
-  --nav-overlay-mid: rgba(10, 25, 47, 0.4);
-  --nav-overlay-strong: rgba(10, 25, 47, 0.9);
-  --gold-border-soft: rgba(197, 160, 89, 0.25);
-  --gold-border-faint: rgba(197, 160, 89, 0.2);
+  --nav-overlay-soft: rgba(47, 74, 58, 0.15);
+  --nav-overlay-mid: rgba(47, 74, 58, 0.4);
+  --nav-overlay-strong: rgba(47, 74, 58, 0.9);
+  --gold-border-soft: rgba(216, 155, 92, 0.25);
+  --gold-border-faint: rgba(216, 155, 92, 0.2);
+}
+
+/* Alternate themes — each overrides the tokens defined above. */
+/* To add a theme: add a map entry here + an option in src/theme/Themes.ts. */
+$themes: (
+  vatican: (
+    '--fms-navy': #6d552c,
+    '--fms-navy-hover': #7d643b,
+    '--fms-ivory': #f9f7f3,
+    '--fms-ivory-dark': #e8e2d1,
+    '--fms-gold': #cbbe8b,
+    '--fms-gold-strong': #b2985f,
+    '--fms-gold-strong-hover': #9f8348,
+    '--fms-gold-deep': #8a7240,
+    '--fms-gold-deep-hover': #775f33,
+    '--fms-gold-script': #6d552c,
+    '--card-bg': #ffffff,
+    '--border-light': #d8d2c3,
+    '--border-faint': #e6e0d3,
+    '--footer-divider': #d4cdbb,
+    '--text-dark': #202020,
+    '--text-soft': #41413f,
+    '--text-muted': #6d6553,
+    '--text-heading': #6d552c,
+    '--on-brand': #ffffff,
+    '--on-navy': #f3efe4,
+    '--on-navy-muted': #cbc2a8,
+    '--nav-overlay-soft': rgba(109, 85, 44, 0.18),
+    '--nav-overlay-mid': rgba(109, 85, 44, 0.4),
+    '--nav-overlay-strong': rgba(109, 85, 44, 0.9),
+    '--gold-border-soft': rgba(178, 152, 95, 0.35),
+    '--gold-border-faint': rgba(178, 152, 95, 0.28),
+  ),
+  dark: (
+    '--fms-navy': #1b201d,
+    '--fms-navy-hover': #262d27,
+    '--fms-ivory': #141715,
+    '--fms-ivory-dark': #0d100e,
+    '--fms-gold': #d39b55,
+    '--fms-gold-strong': #d89b5c,
+    '--fms-gold-strong-hover': #c07f42,
+    '--fms-gold-deep': #bf8b41,
+    '--fms-gold-deep-hover': #ab7832,
+    '--fms-gold-script': #d3a05f,
+    '--card-bg': #1f2421,
+    '--border-light': #2e3630,
+    '--border-faint': #242b26,
+    '--footer-divider': #2e3630,
+    '--text-dark': #e6e4dd,
+    '--text-soft': #b9c0ba,
+    '--text-muted': #8b958d,
+    '--text-heading': #ebe9e1,
+    '--on-brand': #f4f2eb,
+    '--on-navy': #dde4de,
+    '--on-navy-muted': #a3ada5,
+    '--nav-overlay-soft': rgba(0, 0, 0, 0.25),
+    '--nav-overlay-mid': rgba(0, 0, 0, 0.85),
+    '--nav-overlay-strong': rgba(0, 0, 0, 0.92),
+    '--gold-border-soft': rgba(216, 155, 92, 0.3),
+    '--gold-border-faint': rgba(216, 155, 92, 0.22),
+  ),
+);
+
+@each $name, $tokens in $themes {
+  [data-theme='#{$name}'] {
+    @each $token, $value in $tokens {
+      #{$token}: $value;
+    }
+  }
 }
 
 *,
@@ -52,6 +123,10 @@ body {
   background-color: var(--fms-ivory);
   color: var(--text-dark);
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 button {
@@ -65,12 +140,12 @@ img {
 }
 
 :focus-visible {
-  outline: 2px solid var(--fms-gold);
+  outline: 2px solid var(--fms-gold-deep);
   outline-offset: 2px;
 }
 
 .serif {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   letter-spacing: 0.5px;
 }
 

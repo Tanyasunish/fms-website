@@ -45,11 +45,11 @@
   }
 
   &:focus {
-    border-color: var(--fms-gold);
+    border-color: var(--fms-gold-deep);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--fms-gold);
+    outline: 2px solid var(--fms-gold-deep);
     outline-offset: 2px;
   }
 }
@@ -67,7 +67,7 @@
 .brandMark {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--fms-navy);
+  color: var(--text-heading);
 }
 
 .contact {
@@ -86,7 +86,7 @@
 
 .contactIcon {
   flex-shrink: 0;
-  color: var(--fms-gold);
+  color: var(--fms-gold-deep);
 }
 
 .bottom {

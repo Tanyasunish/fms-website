@@ -3,6 +3,8 @@ import { Menu, X } from 'lucide-react';
 import { NavLink, Link } from 'react-router-dom';
 import { DonateButton } from '@/components/ui/DonateButton/DonateButton';
 import { Icon } from '@/components/ui/Icon/Icon';
+import { ThemeToggle } from '@/components/ui/ThemeToggle/ThemeToggle';
+import { THEME_TOGGLE_ENABLED } from '@/theme/Themes';
 import styles from './Navbar.module.scss';
 
 const NAV_ITEMS = [
@@ -34,6 +36,7 @@ export const Navbar: FC = () => {
               {item.label}
             </NavLink>
           ))}
+          {THEME_TOGGLE_ENABLED && <ThemeToggle />}
           <DonateButton small />
         </nav>
 
@@ -55,6 +58,7 @@ export const Navbar: FC = () => {
               {item.label}
             </NavLink>
           ))}
+          {THEME_TOGGLE_ENABLED && <ThemeToggle />}
           <DonateButton small block onClick={closeMobileMenu} />
         </nav>
       )}
