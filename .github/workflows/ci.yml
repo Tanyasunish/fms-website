@@ -2,7 +2,6 @@ name: CI
 
 on:
   pull_request:
-  push:
     branches: [main]
 
 concurrency:
@@ -64,3 +63,32 @@ jobs:
         with:
           name: dist
           path: dist/
+
+  deploy-preview:
+    name: Deploy to Vercel Preview
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: Deploy to Vercel (Preview)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          output="$(npx vercel deploy dist --yes 2>&1)"
+          printf '%s\n' "$output"
+          preview_url="$(printf '%s\n' "$output" | grep -oE 'https://[a-zA-Z0-9-]+\.vercel\.app' | head -n 1 || true)"
+          if [ -n "$preview_url" ]; then
+            echo "### Vercel Preview Deployment" >> "$GITHUB_STEP_SUMMARY"
+            echo "$preview_url" >> "$GITHUB_STEP_SUMMARY"
+          fi
