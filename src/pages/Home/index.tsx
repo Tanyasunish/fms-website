@@ -7,6 +7,7 @@ import type { Pillar, UpcomingEvent } from '@/types';
 import { Button, ButtonLink } from '@/components/ui/Button/Button';
 import { SectionHeading } from '@/components/ui/SectionHeading/SectionHeading';
 import { Icon } from '@/components/ui/Icon/Icon';
+import { Card } from '@/components/ui/Card/Card';
 import styles from './Home.module.scss';
 
 export const Home: FC = () => {
@@ -52,12 +53,12 @@ export const Home: FC = () => {
             <SectionHeading compact title="9 PILLARS OF FMS" tagline="Nine Expressions. One Mission." />
             <div className={styles.pillarGrid}>
               {PILLARS.map((p: Pillar) => (
-                <button
-                  type="button"
+                <Card
                   key={p.num}
+                  as="button"
+                  variant="centered"
                   aria-label={`Enquire about ${p.name}`}
                   onClick={() => openWhatsApp(`Enquiry for Pillar ${p.num}: ${p.name}`)}
-                  className={styles.pillarCard}
                 >
                   <span className={styles.pillarNum}>{p.num}</span>
                   <span className={styles.pillarIcon}>
@@ -66,7 +67,7 @@ export const Home: FC = () => {
                   <span className={`${styles.pillarName} serif`}>{p.name}</span>
                   <em className={`${styles.pillarSub} script-text`}>{p.sub}</em>
                   <span className={styles.pillarDesc}>{p.desc}</span>
-                </button>
+                </Card>
               ))}
             </div>
           </div>

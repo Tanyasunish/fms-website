@@ -6,6 +6,7 @@ import type { FormationEvent } from '@/types';
 import { Button } from '@/components/ui/Button/Button';
 import { SectionHeading } from '@/components/ui/SectionHeading/SectionHeading';
 import { Icon } from '@/components/ui/Icon/Icon';
+import { Card, CardAction, CardTitle } from '@/components/ui/Card/Card';
 import styles from './Formation.module.scss';
 
 export const Formation: FC = () => {
@@ -14,9 +15,9 @@ export const Formation: FC = () => {
       <SectionHeading title="RETREATS & SACRED PILGRIMAGES" />
       <div className={styles.list}>
         {FORMATION_EVENTS.map((ev: FormationEvent) => (
-          <div key={ev.id} className={styles.card}>
+          <Card key={ev.id} variant="row">
             <div>
-              <h4 className={`${styles.cardTitle} serif`}>{ev.title}</h4>
+              <CardTitle>{ev.title}</CardTitle>
               <p className={styles.cardMeta}>
                 <span className={styles.metaItem}>
                   <Icon icon={Calendar} size={14} />
@@ -28,10 +29,12 @@ export const Formation: FC = () => {
                 </span>
               </p>
             </div>
-            <Button variant="whatsapp" onClick={() => openWhatsApp(`Registering for ${ev.title}`)}>
-              Register via WhatsApp
-            </Button>
-          </div>
+            <CardAction>
+              <Button variant="whatsapp" onClick={() => openWhatsApp(`Registering for ${ev.title}`)}>
+                Register via WhatsApp
+              </Button>
+            </CardAction>
+          </Card>
         ))}
       </div>
     </section>
