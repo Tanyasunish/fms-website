@@ -78,7 +78,11 @@ export const Home: FC = () => {
               <div className={styles.blessingMedia}>
                 <h3 className={`${styles.blessingTitle} serif`}>5:30 Blessing</h3>
                 <p className={styles.blessingText}>Start your day with the Word & prayer.</p>
-                <button type="button" onClick={() => openWhatsApp('5:30 Blessing link request')} className={styles.watchBtn}>
+                <button
+                  type="button"
+                  onClick={() => openWhatsApp('5:30 Blessing link request')}
+                  className={styles.watchBtn}
+                >
                   WATCH LATEST
                   <Icon icon={ArrowRight} size={12} />
                 </button>

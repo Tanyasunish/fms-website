@@ -1,8 +1,7 @@
 import { useState, type FC } from 'react';
 import { Menu, X } from 'lucide-react';
 import { NavLink, Link } from 'react-router-dom';
-import { openWhatsApp } from '@/utils/whatsapp';
-import { Button } from '@/components/ui/Button/Button';
+import { DonateButton } from '@/components/ui/DonateButton/DonateButton';
 import { Icon } from '@/components/ui/Icon/Icon';
 import styles from './Navbar.module.scss';
 
@@ -21,7 +20,6 @@ export const Navbar: FC = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const closeMobileMenu = () => setIsMobileOpen(false);
-  const handleDonate = () => openWhatsApp('Donation / General Support');
 
   return (
     <header className={styles.header}>
@@ -36,9 +34,7 @@ export const Navbar: FC = () => {
               {item.label}
             </NavLink>
           ))}
-          <Button variant="gold" small onClick={handleDonate}>
-            DONATE
-          </Button>
+          <DonateButton small />
         </nav>
 
         <button
@@ -59,9 +55,7 @@ export const Navbar: FC = () => {
               {item.label}
             </NavLink>
           ))}
-          <Button variant="gold" small block onClick={handleDonate}>
-            DONATE
-          </Button>
+          <DonateButton small block onClick={closeMobileMenu} />
         </nav>
       )}
     </header>
