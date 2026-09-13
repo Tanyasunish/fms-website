@@ -27,7 +27,7 @@ export const Navbar: FC = () => {
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link to="/" onClick={closeMobileMenu} className={styles.brand}>
-          <span className={`${styles.brandTitle} serif`}>FEED MY SHEEP, Hi Tanya</span>
+          <span className={`${styles.brandTitle} serif`}>FEED MY SHEEP, Hi Tanya xoxo</span>
         </Link>
 
         <nav className={styles.desktopNav} aria-label="Primary">
