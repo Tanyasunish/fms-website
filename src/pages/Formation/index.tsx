@@ -1,30 +1,30 @@
-import React from 'react';
+import type { FC } from 'react';
 import { openWhatsApp } from '@/utils/whatsapp';
 import { FORMATION_EVENTS } from '@/data/events';
 import type { FormationEvent } from '@/types';
+import { Button } from '@/components/ui/Button/Button';
+import { SectionHeading } from '@/components/ui/SectionHeading/SectionHeading';
+import styles from './Formation.module.scss';
 
-export const Formation: React.FC = () => {
+export const Formation: FC = () => {
   return (
-    <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '50px 24px' }}>
-      <h2 className="serif" style={{ fontSize: '1.8rem', color: 'var(--fms-navy)', textAlign: 'center', marginBottom: '24px' }}>RETREATS & SACRED PILGRIMAGES</h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <section className={styles.section}>
+      <SectionHeading title="RETREATS & SACRED PILGRIMAGES" />
+      <div className={styles.list}>
         {FORMATION_EVENTS.map((ev: FormationEvent) => (
-          <div key={ev.id} className="formation-card">
+          <div key={ev.id} className={styles.card}>
             <div>
-              <h4 className="serif" style={{ color: 'var(--fms-navy)' }}>{ev.title}</h4>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>📅 {ev.date} | 📍 {ev.loc}</p>
+              <h4 className={`${styles.cardTitle} serif`}>{ev.title}</h4>
+              <p className={styles.cardMeta}>
+                📅 {ev.date} | 📍 {ev.loc}
+              </p>
             </div>
-            <button 
-              type="button"
-              onClick={() => openWhatsApp(`Registering for ${ev.title}`)} 
-              className="btn btn-wa" 
-              style={{ width: 'auto' }}
-            >
+            <Button variant="whatsapp" onClick={() => openWhatsApp(`Registering for ${ev.title}`)}>
               Register via WhatsApp
-            </button>
+            </Button>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };

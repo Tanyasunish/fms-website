@@ -1,0 +1,239 @@
+.hero {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  min-height: 440px;
+}
+
+.heroContent {
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heroEyebrow {
+  font-size: 1.25rem;
+  color: var(--fms-navy);
+  margin-bottom: 14px;
+  line-height: 1.35;
+}
+
+.heroLead {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.heroActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.heroImage {
+  background:
+    linear-gradient(to bottom, var(--nav-overlay-mid) 0%, var(--nav-overlay-soft) 100%),
+    url('https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1400&q=80')
+      center/cover no-repeat;
+  padding: 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.heroCaption {
+  text-align: right;
+}
+
+.heroTitle {
+  font-size: 1.4rem;
+  color: var(--fms-navy);
+}
+
+.heroSubtitle {
+  font-size: 0.95rem;
+  color: var(--text-soft);
+}
+
+.heroScript {
+  font-size: 1.1rem;
+  color: var(--fms-gold-script);
+}
+
+.section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.homeGrid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 30px;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pillarGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.pillarCard {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--fms-gold);
+    box-shadow: 0 6px 18px rgba(10, 25, 47, 0.08);
+  }
+}
+
+.pillarNum {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--fms-navy);
+  color: var(--card-bg);
+  font-size: 0.7rem;
+  margin: 0 auto 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pillarIcon {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.pillarName {
+  font-size: 0.8rem;
+  color: var(--fms-navy);
+  margin-bottom: 4px;
+}
+
+.pillarSub {
+  font-size: 0.75rem;
+  color: var(--fms-gold-script);
+  margin-bottom: 6px;
+}
+
+.pillarDesc {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.sidebarCard {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.cardLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.blessingMedia {
+  height: 160px;
+  border-radius: 6px;
+  background:
+    linear-gradient(to top, var(--nav-overlay-strong) 20%, var(--nav-overlay-mid) 100%),
+    url('https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=500&q=80')
+      center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px;
+  color: var(--card-bg);
+}
+
+.blessingTitle {
+  font-size: 1.3rem;
+}
+
+.blessingText {
+  font-size: 0.7rem;
+  color: var(--on-navy-muted);
+  margin-bottom: 6px;
+}
+
+.watchBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--fms-gold);
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    color: var(--fms-gold-deep);
+  }
+}
+
+.eventRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-faint);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.eventBadge {
+  background: var(--fms-navy);
+  color: var(--card-bg);
+  text-align: center;
+  border-radius: 4px;
+  min-width: 40px;
+  padding: 4px;
+}
+
+.eventDay {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.eventMonth {
+  font-size: 0.55rem;
+}
+
+.eventTitle {
+  font-size: 0.78rem;
+  color: var(--fms-navy);
+}
+
+.eventLoc {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}

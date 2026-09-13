@@ -1,0 +1,89 @@
+/* Design tokens + global base. Component-specific styles live in *.module.scss */
+
+:root {
+  /* Brand colors */
+  --fms-navy: #0a192f;
+  --fms-navy-hover: #162947;
+  --fms-ivory: #fdfbf7;
+  --fms-ivory-dark: #f4efe6;
+  --fms-gold: #c5a059;
+  --fms-gold-strong: #c49746;
+  --fms-gold-strong-hover: #b0883a;
+  --fms-gold-deep: #8f7241;
+  --fms-gold-deep-hover: #7c6136;
+  --fms-gold-script: #926e28;
+
+  /* Surfaces & borders */
+  --card-bg: #ffffff;
+  --border-light: #e7dfd3;
+  --border-faint: #f1ece3;
+  --footer-divider: #e5ddcf;
+
+  /* Text */
+  --text-dark: #1f2937;
+  --text-soft: #2d3748;
+  --text-muted: #5b6777;
+  --on-navy: #e2e8f0;
+  --on-navy-muted: #cbd5e1;
+
+  /* Brand actions */
+  --wa: #25d366;
+  --wa-hover: #1eb857;
+  --success: #166534;
+
+  /* State */
+  --nav-overlay-soft: rgba(10, 25, 47, 0.15);
+  --nav-overlay-mid: rgba(10, 25, 47, 0.4);
+  --nav-overlay-strong: rgba(10, 25, 47, 0.9);
+  --gold-border-soft: rgba(197, 160, 89, 0.25);
+  --gold-border-faint: rgba(197, 160, 89, 0.2);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--fms-ivory);
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+button {
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--fms-gold);
+  outline-offset: 2px;
+}
+
+.serif {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.5px;
+}
+
+.script-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.app-main {
+  min-height: 80vh;
+}

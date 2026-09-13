@@ -1,0 +1,86 @@
+.footer {
+  background: var(--fms-ivory-dark);
+  border-top: 1px solid var(--border-light);
+  padding: 40px 24px 20px;
+}
+
+.grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.columnTitle {
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.muted {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.newsletterLead {
+  margin-bottom: 8px;
+}
+
+.form {
+  display: flex;
+}
+
+.emailInput {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid var(--border-light);
+  background: var(--card-bg);
+  font-size: 0.75rem;
+  color: var(--text-dark);
+  outline: none;
+
+  &::placeholder {
+    color: var(--text-muted);
+  }
+
+  &:focus {
+    border-color: var(--fms-gold);
+  }
+}
+
+.success {
+  font-size: 0.7rem;
+  color: var(--success);
+  margin-top: 6px;
+}
+
+.center {
+  text-align: center;
+}
+
+.brandMark {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--fms-navy);
+}
+
+.contact {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  border-top: 1px solid var(--footer-divider);
+  padding-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
