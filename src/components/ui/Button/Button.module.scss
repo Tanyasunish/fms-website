@@ -1,0 +1,74 @@
+.btn {
+  padding: 10px 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.navy {
+  background: var(--fms-navy);
+  color: var(--card-bg);
+
+  &:hover {
+    background: var(--fms-navy-hover);
+  }
+}
+
+.outline {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-dark);
+
+  &:hover {
+    border-color: var(--fms-gold);
+    color: var(--fms-gold);
+  }
+}
+
+.gold {
+  background: var(--fms-gold-strong);
+  color: var(--fms-navy);
+
+  &:hover {
+    background: var(--fms-gold-strong-hover);
+  }
+}
+
+.goldDeep {
+  background: var(--fms-gold-deep);
+  color: var(--card-bg);
+
+  &:hover {
+    background: var(--fms-gold-deep-hover);
+  }
+}
+
+.whatsapp {
+  background: var(--wa);
+  color: var(--card-bg);
+
+  &:hover {
+    background: var(--wa-hover);
+  }
+}
+
+.small {
+  padding: 8px 16px;
+  font-size: 0.72rem;
+}
+
+.block {
+  width: 100%;
+}

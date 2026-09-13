@@ -1,0 +1,29 @@
+.heading {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: var(--fms-navy);
+  margin-bottom: 8px;
+}
+
+.compact .title {
+  font-size: 1.4rem;
+}
+
+.tagline {
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  color: var(--fms-gold);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.lead {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}

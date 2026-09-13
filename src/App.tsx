@@ -23,8 +23,8 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Navbar />
-      <main style={{ minHeight: '80vh' }}>
-        <Suspense fallback={<div style={{ minHeight: '80vh' }} />}>
+      <main className="app-main">
+        <Suspense fallback={<div className="app-main" />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/media" element={<Media />} />

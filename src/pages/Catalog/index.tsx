@@ -1,47 +1,50 @@
-import React from 'react';
+import type { FC } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { orderProductWhatsApp } from '@/utils/whatsapp';
 import { PRODUCTS } from '@/data/products';
 import type { Product } from '@/types';
+import { Button } from '@/components/ui/Button/Button';
+import { SectionHeading } from '@/components/ui/SectionHeading/SectionHeading';
+import styles from './Catalog.module.scss';
 
-export const Catalog: React.FC<{ initialCategory?: 'publications' | 'living' }> = ({ initialCategory = 'publications' }) => {
+type Category = 'all' | 'publications' | 'living';
+
+const CATEGORIES: readonly Category[] = ['all', 'publications', 'living'];
+
+const isCategory = (value: string | null): value is Category =>
+  value === 'all' || value === 'publications' || value === 'living';
+
+export interface CatalogProps {
+  initialCategory?: Exclude<Category, 'all'>;
+}
+
+export const Catalog: FC<CatalogProps> = ({ initialCategory = 'publications' }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const categoryParam = searchParams.get('category');
-  const tab: 'all' | 'publications' | 'living' =
-    (categoryParam === 'all' || categoryParam === 'publications' || categoryParam === 'living')
-      ? categoryParam
-      : initialCategory;
+  const param = searchParams.get('category');
+  const tab: Category = isCategory(param) ? param : initialCategory;
 
-  const handleTabSelect = (selectedTab: 'all' | 'publications' | 'living') => {
-    setSearchParams(selectedTab === initialCategory ? {} : { category: selectedTab });
+  const handleTabSelect = (selectedTab: Category) => {
+    setSearchParams({ category: selectedTab });
   };
 
   const filtered = tab === 'all' ? PRODUCTS : PRODUCTS.filter((p: Product) => p.category === tab);
 
   return (
-    <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '50px 24px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '36px' }}>
-        <h2 className="serif" style={{ fontSize: '1.8rem', color: 'var(--fms-navy)', marginBottom: '8px' }}>PUBLICATIONS & LIVING</h2>
-        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Tap any item to order instantly via WhatsApp directly with our distribution team.</p>
-
-        {/* Filter Tabs */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '20px' }}>
-          {(['all', 'publications', 'living'] as const).map(t => (
+    <section className={styles.section}>
+      <div className={styles.header}>
+        <SectionHeading
+          title="PUBLICATIONS & LIVING"
+          lead="Tap any item to order instantly via WhatsApp directly with our distribution team."
+        />
+        <div className={styles.tabs} role="group" aria-label="Filter products">
+          {CATEGORIES.map((t) => (
             <button
               key={t}
+              type="button"
               onClick={() => handleTabSelect(t)}
-              style={{
-                padding: '6px 16px',
-                borderRadius: '20px',
-                border: '1px solid var(--border-light)',
-                background: tab === t ? 'var(--fms-navy)' : '#fff',
-                color: tab === t ? '#fff' : 'var(--text-dark)',
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                cursor: 'pointer'
-              }}
+              aria-pressed={tab === t}
+              className={[styles.tab, tab === t && styles.tabActive].filter(Boolean).join(' ')}
             >
               {t}
             </button>
@@ -49,26 +52,26 @@ export const Catalog: React.FC<{ initialCategory?: 'publications' | 'living' }> 
         </div>
       </div>
 
-      {/* Product Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '24px' }}>
+      <div className={styles.grid}>
         {filtered.map((p: Product) => (
-          <div key={p.id} style={{ background: '#fff', border: '1px solid var(--border-light)', borderRadius: '10px', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-            <img src={p.image} alt={p.title} loading="lazy" style={{ height: '220px', width: '100%', objectFit: 'cover' }} />
-            <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-              <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: 'var(--fms-gold)', fontWeight: 700 }}>{p.category}</span>
-              <h4 className="serif" style={{ fontSize: '0.95rem', margin: '6px 0 8px', color: 'var(--fms-navy)' }}>{p.title}</h4>
-              <div style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '16px' }}>{p.price}</div>
-              <button 
+          <article key={p.id} className={styles.productCard}>
+            <img src={p.image} alt={p.title} loading="lazy" className={styles.thumb} />
+            <div className={styles.productBody}>
+              <span className={styles.category}>{p.category}</span>
+              <h4 className={`${styles.productTitle} serif`}>{p.title}</h4>
+              <div className={styles.price}>{p.price}</div>
+              <Button
+                variant="whatsapp"
+                block
+                className={styles.orderBtn}
                 onClick={() => orderProductWhatsApp(p.title, p.price)}
-                className="btn btn-wa" 
-                style={{ marginTop: 'auto' }}
               >
                 💬 Order via WhatsApp
-              </button>
+              </Button>
             </div>
-          </div>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
