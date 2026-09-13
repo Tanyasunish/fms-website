@@ -84,12 +84,11 @@ export const Home: FC = () => {
           tagline="One mission. Nine expressions. Every one of them feeds the same flock."
         />
         <div className={styles.pillarGrid}>
-          {PILLARS.map((p: Pillar, i: number) => (
+          {PILLARS.map((p: Pillar) => (
             <Card
               key={p.num}
               as="button"
               variant="centered"
-              className={i % 4 === 3 ? styles.pillarWide : undefined}
               aria-label={`Enquire about ${p.name}`}
               onClick={() => openWhatsApp(`Enquiry for Pillar ${p.num}: ${p.name}`)}
             >
