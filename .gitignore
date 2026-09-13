@@ -17,6 +17,9 @@ dist-ssr
 .env.*
 !.env.example
 
+# Runtime configuration (deployed/generated per environment, see public/config.js.example)
+public/config.js
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

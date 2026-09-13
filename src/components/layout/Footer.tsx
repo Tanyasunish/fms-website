@@ -1,6 +1,7 @@
 import { useState, type FC, type FormEvent } from 'react';
 import { Mail, MapPin } from 'lucide-react';
 import { openWhatsApp } from '@/utils/whatsapp';
+import { formatEnquiryPhoneNumber } from '@/config';
 import { Button } from '@/components/ui/Button/Button';
 import { Icon } from '@/components/ui/Icon/Icon';
 import { WhatsAppIcon } from '@/components/ui/Icon/WhatsAppIcon';
@@ -53,7 +54,7 @@ export const Footer: FC = () => {
           <p className={styles.contact}>
             <span className={styles.contactRow}>
               <Icon icon={WhatsAppIcon} size={14} className={styles.contactIcon} />
-              WhatsApp: +91 9847 9847 46
+              WhatsApp: {formatEnquiryPhoneNumber() || 'Available on request'}
             </span>
             <span className={styles.contactRow}>
               <Icon icon={Mail} size={14} className={styles.contactIcon} />

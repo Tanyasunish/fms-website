@@ -1,0 +1,6 @@
+// Public runtime configuration. Copy this file to public/config.js and set the
+// enquiry phone number (international number, digits only, with country code).
+// Do not put secrets or API keys here - everything in this file is visible to users.
+window.APP_CONFIG = {
+  enquiryPhoneNumber: "919876543210",
+};
