@@ -56,12 +56,22 @@
 
 .toggle {
   display: none;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   color: var(--card-bg);
-  font-size: 1.5rem;
   cursor: pointer;
   padding: 4px 8px;
+
+  &:hover {
+    color: var(--fms-gold);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--fms-gold);
+    outline-offset: 2px;
+  }
 }
 
 .mobileMenu {
@@ -83,6 +93,6 @@
   }
 
   .toggle {
-    display: block;
+    display: flex;
   }
 }

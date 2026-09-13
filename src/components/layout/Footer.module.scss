@@ -39,7 +39,6 @@
   background: var(--card-bg);
   font-size: 0.75rem;
   color: var(--text-dark);
-  outline: none;
 
   &::placeholder {
     color: var(--text-muted);
@@ -47,6 +46,11 @@
 
   &:focus {
     border-color: var(--fms-gold);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--fms-gold);
+    outline-offset: 2px;
   }
 }
 

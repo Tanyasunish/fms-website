@@ -52,28 +52,21 @@ export const Home: FC = () => {
             <SectionHeading compact title="9 PILLARS OF FMS" tagline="Nine Expressions. One Mission." />
             <div className={styles.pillarGrid}>
               {PILLARS.map((p: Pillar) => (
-                <div
+                <button
+                  type="button"
                   key={p.num}
-                  role="button"
-                  tabIndex={0}
                   aria-label={`Enquire about ${p.name}`}
                   onClick={() => openWhatsApp(`Enquiry for Pillar ${p.num}: ${p.name}`)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      openWhatsApp(`Enquiry for Pillar ${p.num}: ${p.name}`);
-                    }
-                  }}
                   className={styles.pillarCard}
                 >
-                  <div className={styles.pillarNum}>{p.num}</div>
-                  <div className={styles.pillarIcon}>
+                  <span className={styles.pillarNum}>{p.num}</span>
+                  <span className={styles.pillarIcon}>
                     <Icon icon={p.icon} size={28} />
-                  </div>
-                  <h4 className={`${styles.pillarName} serif`}>{p.name}</h4>
-                  <div className={`${styles.pillarSub} script-text`}>{p.sub}</div>
-                  <p className={styles.pillarDesc}>{p.desc}</p>
-                </div>
+                  </span>
+                  <span className={`${styles.pillarName} serif`}>{p.name}</span>
+                  <em className={`${styles.pillarSub} script-text`}>{p.sub}</em>
+                  <span className={styles.pillarDesc}>{p.desc}</span>
+                </button>
               ))}
             </div>
           </div>
