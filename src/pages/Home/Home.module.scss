@@ -171,13 +171,17 @@
 
 .pillarGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
   margin-top: 44px;
-}
 
-.pillarWide {
-  grid-column: span 2;
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 620px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .pillarNum {
@@ -511,10 +515,6 @@
 
   .featureMedia {
     min-height: 280px;
-  }
-
-  .pillarWide {
-    grid-column: auto;
   }
 }
 
