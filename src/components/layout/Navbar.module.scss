@@ -20,7 +20,7 @@
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  color: var(--card-bg);
+  color: var(--on-brand);
 }
 
 .brandTitle {
@@ -46,12 +46,12 @@
   padding: 4px 0;
 
   &:hover {
-    color: var(--fms-gold);
+    color: var(--fms-gold-strong);
   }
 }
 
 .active {
-  color: var(--fms-gold);
+  color: var(--fms-gold-strong);
 }
 
 .toggle {
@@ -60,16 +60,16 @@
   justify-content: center;
   background: none;
   border: none;
-  color: var(--card-bg);
+  color: var(--on-brand);
   cursor: pointer;
   padding: 4px 8px;
 
   &:hover {
-    color: var(--fms-gold);
+    color: var(--fms-gold-strong);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--fms-gold);
+    outline: 2px solid var(--fms-gold-strong);
     outline-offset: 2px;
   }
 }

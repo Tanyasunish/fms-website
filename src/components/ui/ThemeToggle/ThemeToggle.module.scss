@@ -1,0 +1,75 @@
+.root {
+  position: relative;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--gold-border-soft);
+  border-radius: 50%;
+  color: var(--on-navy);
+  cursor: pointer;
+  padding: 7px;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    color: var(--fms-gold-strong);
+    border-color: var(--fms-gold-strong);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--fms-gold-strong);
+    outline-offset: 2px;
+  }
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  min-width: 168px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 6px;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: var(--text-dark);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 8px 10px;
+  text-align: left;
+  width: 100%;
+
+  &:hover {
+    background: var(--fms-ivory);
+    color: var(--text-heading);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--fms-gold-deep);
+    outline-offset: 2px;
+  }
+}
+
+.itemLabel {
+  flex: 1;
+}

@@ -28,15 +28,15 @@
 .eyebrow {
   font-size: 0.65rem;
   text-transform: uppercase;
-  color: var(--fms-gold);
+  color: var(--fms-gold-script);
   font-weight: 700;
   margin-bottom: 6px;
 }
 
 .title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   letter-spacing: 0.5px;
-  color: var(--fms-navy);
+  color: var(--text-heading);
   margin: 0 0 8px;
 }
 
@@ -73,7 +73,7 @@
 
   &:hover,
   &:focus-visible {
-    border-color: var(--fms-gold);
-    box-shadow: 0 6px 18px rgba(10, 25, 47, 0.08);
+    border-color: var(--fms-gold-deep);
+    box-shadow: 0 6px 18px rgba(47, 74, 58, 0.08);
   }
 }

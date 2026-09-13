@@ -32,11 +32,11 @@
     color 0.2s ease;
 
   &:hover {
-    border-color: var(--fms-gold);
+    border-color: var(--fms-gold-deep);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--fms-gold);
+    outline: 2px solid var(--fms-gold-deep);
     outline-offset: 2px;
   }
 }
@@ -44,7 +44,7 @@
 .tabActive {
   background: var(--fms-navy);
   border-color: var(--fms-navy);
-  color: var(--card-bg);
+  color: var(--on-brand);
 
   &:hover {
     border-color: var(--fms-navy);

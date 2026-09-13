@@ -2,6 +2,7 @@ import { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { ThemeProvider } from '@/theme/ThemeProvider';
 
 const Home = lazy(() => import('@/pages/Home').then((m) => ({ default: m.Home })));
 const Media = lazy(() => import('@/pages/Media').then((m) => ({ default: m.Media })));
@@ -20,21 +21,23 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Navbar />
-      <main className="app-main">
-        <Suspense fallback={<div className="app-main" />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/media" element={<Media />} />
-            <Route path="/publications" element={<Catalog />} />
-            <Route path="/living" element={<Catalog />} />
-            <Route path="/retreats" element={<Formation />} />
-          </Routes>
-        </Suspense>
-      </main>
-      <Footer />
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Navbar />
+        <main className="app-main">
+          <Suspense fallback={<div className="app-main" />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/media" element={<Media />} />
+              <Route path="/publications" element={<Catalog />} />
+              <Route path="/living" element={<Catalog />} />
+              <Route path="/retreats" element={<Formation />} />
+            </Routes>
+          </Suspense>
+        </main>
+        <Footer />
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
